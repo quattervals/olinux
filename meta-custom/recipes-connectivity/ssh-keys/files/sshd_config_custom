@@ -1,0 +1,32 @@
+# Custom SSH daemon configuration for BeagleBone Black
+
+# Basic settings
+Port 22
+Protocol 2
+AddressFamily any
+ListenAddress 0.0.0.0
+
+# Authentication
+PermitRootLogin yes
+PubkeyAuthentication yes
+PasswordAuthentication yes
+PermitEmptyPasswords yes
+ChallengeResponseAuthentication no
+
+# Host keys
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Connection settings
+ClientAliveInterval 30
+ClientAliveCountMax 3
+MaxAuthTries 6
+MaxSessions 10
+
+# Subsystem
+Subsystem sftp /usr/libexec/sftp-server
