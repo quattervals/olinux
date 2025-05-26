@@ -1,10 +1,13 @@
 [Match]
-Name=eth*
-KernelCommandLine=!nfsroot
+Name=eth0
 
 [Network]
-DHCP=no
 Address=192.168.1.100/24
 Gateway=192.168.1.1
 DNS=8.8.8.8
 DNS=8.8.4.4
+DHCP=no
+
+[Route]
+Destination=0.0.0.0/0
+Gateway=192.168.1.1
