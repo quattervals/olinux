@@ -4,8 +4,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 SRC_URI = " \
-    file://eth0.network \
-    file://99-default.link \
+    file://10-eth0.network \
 "
 
 S = "${WORKDIR}"
@@ -13,18 +12,12 @@ S = "${WORKDIR}"
 RDEPENDS:${PN} = "systemd"
 
 do_install() {
-    install -d ${D}${systemd_system_unitdir}/network
-    install -m 0644 ${WORKDIR}/eth0.network ${D}${systemd_system_unitdir}/network/
-    install -m 0644 ${WORKDIR}/99-default.link ${D}${systemd_system_unitdir}/network/
+
+    install -d ${D}/usr/lib/systemd/network
+    install -m 0644 ${WORKDIR}/10-eth0.network ${D}/usr/lib/systemd/network/
+
 }
 
 FILES:${PN} = " \
-    ${systemd_system_unitdir}/network/eth0.network \
-    ${systemd_system_unitdir}/network/99-default.link \
+    /usr/lib/systemd/network/10-eth0.network \
 "
-
-# Enable systemd-networkd service
-SYSTEMD_SERVICE:${PN} = "systemd-networkd.service systemd-resolved.service"
-SYSTEMD_AUTO_ENABLE = "enable"
-
-inherit systemd
