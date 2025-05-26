@@ -28,3 +28,9 @@ IMAGE_INSTALL:remove = " \
     connman \
     connman-client \
 "
+
+IMAGE_INSTALL += " \
+    packagegroup-core-boot \
+    packagegroup-core-ssh-openssh \
+    openssh-scp \
+    "
