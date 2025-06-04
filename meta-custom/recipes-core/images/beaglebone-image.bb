@@ -18,9 +18,10 @@ PACKAGECONFIG:append:pn-systemd = " networkd resolved"
 # Remove conflicting network management
 BAD_RECOMMENDATIONS += "busybox-syslog"
 
-# Add our custom network configuration
+# Add our custom configurations
 IMAGE_INSTALL:append = " \
     packagegroup-beaglebone-network \
+    packagegroup-beaglebone-utils \
 "
 
 # Remove network manager packages that might conflict
