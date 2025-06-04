@@ -20,3 +20,8 @@ bitbake core-image-minimal
 ## Host PC
 - Networking: ipv4, manual:
   - enter own address e.g. 192.168.1.101, Netmask 255.255.255.0 and *no* Gateway to avoid interference with the wireless network.
+
+- serial connection
+  - `picocom -b 115200 /dev/ttyUSB0`
+- ssh
+  - `ssh root@192.168.1.100`
