@@ -1,3 +1,5 @@
+SUMMARY = "Hello World application written in C"
+DESCRIPTION = "A simple Hello World application written in C for demonstration"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
