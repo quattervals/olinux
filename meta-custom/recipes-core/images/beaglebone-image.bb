@@ -8,10 +8,6 @@ inherit core-image
 IMAGE_INSTALL:append = " kernel-modules"
 IMAGE_INSTALL:remove = " sysvinit"
 
-# Use systemd as init system
-VIRTUAL-RUNTIME_init_manager = "systemd"
-VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
-
 # Enable systemd networking components
 PACKAGECONFIG:append:pn-systemd = " networkd resolved"
 
