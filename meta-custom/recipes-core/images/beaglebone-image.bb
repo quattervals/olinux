@@ -3,12 +3,12 @@ DESCRIPTION = "Minimal image for BeagleBone Black with systemd-networkd"
 
 LICENSE = "MIT"
 
-# Inherit from core-image-minimal
-require recipes-core/images/core-image-minimal.bb
+inherit core-image
+
+IMAGE_INSTALL:append = " kernel-modules"
+IMAGE_INSTALL:remove = " sysvinit"
 
 # Use systemd as init system
-DISTRO_FEATURES:append = " systemd"
-DISTRO_FEATURES_BACKFILL_CONSIDERED += "sysvinit"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
 
