@@ -1,9 +1,9 @@
 [Unit]
-Description=Run Hello World RS with systemd
+Description=Run Hello World RS with systemd repeatedly
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/hello-systemd.sh
+ExecStart=/usr/bin/hello-world-rs
 Restart=always
 RestartSec=2
 
