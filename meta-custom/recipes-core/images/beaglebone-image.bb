@@ -35,3 +35,4 @@ IMAGE_INSTALL += " \
 # Add applications
 IMAGE_INSTALL:append = " hello-world"
 IMAGE_INSTALL:append = " hello-world-rs"
+IMAGE_INSTALL:append = " service-hello"
