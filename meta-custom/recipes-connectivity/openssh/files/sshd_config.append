@@ -1,0 +1,14 @@
+# Use certificate-based host authentication
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
+
+# Require certificate-based user authentication
+TrustedUserCAKeys /etc/ssh/trusted_user_ca_keys.pub
+
+# Disable password authentication - only certificates allowed
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PubkeyAuthentication yes
+
+# Optional: Log certificate details for debugging
+LogLevel VERBOSE

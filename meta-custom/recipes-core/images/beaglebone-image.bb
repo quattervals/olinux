@@ -36,3 +36,4 @@ IMAGE_INSTALL += " \
 IMAGE_INSTALL:append = " hello-world"
 IMAGE_INSTALL:append = " hello-world-rs"
 IMAGE_INSTALL:append = " service-hello"
+IMAGE_INSTALL:append = " ssh-host-cert"
