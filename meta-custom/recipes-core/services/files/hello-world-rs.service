@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Hello World RS with systemd repeatedly
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hello-world-rs
+Restart=always
+RestartSec=2
+
+
+
+[Install]
+WantedBy=default.target

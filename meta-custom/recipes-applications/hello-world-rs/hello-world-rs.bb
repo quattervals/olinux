@@ -23,7 +23,7 @@ RUST_TARGET_SYS= "armv7-unknown-linux-gnueabihf"
 
 do_install() {
     install -d ${D}${bindir}
-    install -m 0755 ${B}/${RUST_TARGET_SYS}/release/hello-world-rs ${D}${bindir}/hello-world-rs
+    install -m 0755 ${B}/${RUST_TARGET_SYS}/release/${TARGET_BIN_NAME} ${D}${bindir}/${TARGET_BIN_NAME}
 }
 
-FILES:${PN} = "${bindir}/hello-world-rs"
+FILES:${PN} = "${bindir}/${TARGET_BIN_NAME}"

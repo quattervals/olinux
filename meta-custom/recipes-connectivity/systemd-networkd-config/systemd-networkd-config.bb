@@ -7,17 +7,16 @@ SRC_URI = " \
     file://10-eth0.network \
 "
 
+inherit systemd
 S = "${WORKDIR}"
 
 RDEPENDS:${PN} = "systemd"
 
 do_install() {
-
-    install -d ${D}/usr/lib/systemd/network
-    install -m 0644 ${WORKDIR}/10-eth0.network ${D}/usr/lib/systemd/network/
-
+    install -d ${D}/${systemd_system_unitdir}/network
+    install -m 0644 ${WORKDIR}/10-eth0.network ${D}/${systemd_system_unitdir}/network/
 }
 
 FILES:${PN} = " \
-    /usr/lib/systemd/network/10-eth0.network \
+    ${systemd_system_unitdir}/network/10-eth0.network \
 "
