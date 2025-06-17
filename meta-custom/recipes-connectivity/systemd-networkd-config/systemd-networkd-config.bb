@@ -13,10 +13,10 @@ S = "${WORKDIR}"
 RDEPENDS:${PN} = "systemd"
 
 do_install() {
-    install -d ${D}/${systemd_system_unitdir}/network
-    install -m 0644 ${WORKDIR}/10-eth0.network ${D}/${systemd_system_unitdir}/network/
+    install -d ${D}/${systemd_unitdir}/network
+    install -m 0644 ${WORKDIR}/10-eth0.network ${D}/${systemd_unitdir}/network/
 }
 
 FILES:${PN} = " \
-    ${systemd_system_unitdir}/network/10-eth0.network \
+    ${systemd_unitdir}/network/10-eth0.network \
 "
