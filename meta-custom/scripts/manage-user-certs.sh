@@ -4,7 +4,8 @@
 PROJECT_DIR="$(dirname "$0")/.."
 CA_DIR="$PROJECT_DIR/ssh-ca"
 CA_KEY="$CA_DIR/keys/ssh_ca_key"
-USERS_DIR="$CA_DIR/users"
+USERS_DIR="$PROJECT_DIR/ssh_device/users"
+
 
 mkdir -p "$USERS_DIR"
 

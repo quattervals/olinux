@@ -4,9 +4,8 @@
 PROJECT_DIR="$(dirname "$0")/.."
 CA_DIR="$PROJECT_DIR/ssh-ca"
 KEYS_DIR="$CA_DIR/keys"
-CERTS_DIR="$CA_DIR/certificates"
 
-mkdir -p "$KEYS_DIR" "$CERTS_DIR"
+mkdir -p "$KEYS_DIR" 
 
 # Generate CA key pair (do this once)
 if [ ! -f "$KEYS_DIR/ssh_ca_key" ]; then
