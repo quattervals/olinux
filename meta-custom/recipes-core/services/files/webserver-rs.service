@@ -1,0 +1,15 @@
+[Unit]
+Description=Run Rust Webserver
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/webserver-rs --html-files /var/www/webserver-rs/html --server-address 0.0.0.0 --server-port 7878
+Restart=always
+RestartSec=5
+
+
+[Install]
+WantedBy=multi-user.target
