@@ -1,0 +1,14 @@
+# Enable certificate-based host authentication (in addition to standard keys)
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
+
+# Allow certificate-based user authentication
+TrustedUserCAKeys /etc/ssh/ssh_ca_key.pub
+
+# Allow both password and public key authentication for flexibility
+PasswordAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile none
+
+# Optional: Log certificate details for debugging
+LogLevel VERBOSE

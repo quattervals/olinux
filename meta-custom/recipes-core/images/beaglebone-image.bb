@@ -29,10 +29,10 @@ IMAGE_INSTALL:remove = " \
 IMAGE_INSTALL += " \
     packagegroup-core-boot \
     packagegroup-core-ssh-openssh \
-    openssh-scp \
-    "
+"
 
 # Add applications
 IMAGE_INSTALL:append = " hello-world"
 IMAGE_INSTALL:append = " hello-world-rs"
 IMAGE_INSTALL:append = " service-hello"
+IMAGE_INSTALL:append = " ssh-host-cert"
