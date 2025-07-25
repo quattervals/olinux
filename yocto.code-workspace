@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.conf": "bitbake",
+      "*.inc": "bitbake"
+    },
+    "bitbake.buildConfigurations": [
+      {
+        "name": "Default Build",
+        "pathToBuildFolder": "${workspaceFolder}/build",
+        "pathToEnvScript": "${workspaceFolder}/poky/oe-init-build-env"
+      }
+    ],
+    "bitbake.pathToBuildFolder": "${workspaceFolder}/build",
+    "bitbake.pathToEnvScript": "${workspaceFolder}/poky/oe-init-build-env",
+    "bitbake.pathToBitbakeFolder": "${workspaceFolder}/poky/bitbake",
+    "python.autoComplete.extraPaths": [
+      "${workspaceFolder}/poky/bitbake/lib",
+      "${workspaceFolder}/poky/meta/lib"
+    ],
+    "python.analysis.extraPaths": [
+      "${workspaceFolder}/poky/bitbake/lib",
+      "${workspaceFolder}/poky/meta/lib"
+    ],
+    "bitbake.shellEnv": {
+
+	},
+    "bitbake.autoSourceEnv": true,
+    "bitbake.defaultBuildConfiguration": "Default Build"
+  }
+}
