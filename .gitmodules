@@ -18,3 +18,6 @@
 	path = meta-rust-bin
 	url = git@github.com:rust-embedded/meta-rust-bin.git
 	branch = master
+[submodule "meta-lts-mixins"]
+	path = meta-lts-mixins
+	url = https://git.yoctoproject.org/meta-lts-mixins

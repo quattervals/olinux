@@ -1,8 +1,8 @@
-# Minimal BeagleBone Black Linux
+# Educational BeagleBone Black Linux
 
-Ultra-minimal Yocto setup that boots Linux with serial console access only.
+Decent platform to do all sorts of things wanted from embedded linux
 
-## Quick Start
+## Setup
 
 ```bash
 source poky/oe-init-build-env build
@@ -24,4 +24,5 @@ bitbake core-image-minimal
 - serial connection
   - `picocom -b 115200 /dev/ttyUSB0`
 - ssh
-  - `ssh root@192.168.1.100`
+  - the device gets the same IP address assigned every time from the PCs DHCP server
+  - `ssh root@192.168.100.10`

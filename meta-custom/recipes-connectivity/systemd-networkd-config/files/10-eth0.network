@@ -2,11 +2,7 @@
 Name=eth0
 
 [Network]
-Address=192.168.1.100/24
-Gateway=192.168.1.1
-DNS=8.8.8.8
-DNS=8.8.4.4
-DHCP=no
+DHCP=yes
 
 [Route]
 Destination=0.0.0.0/0

@@ -4,7 +4,9 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-inherit cargo_bin
+inherit cargo
+
+inherit rust
 
 do_compile[network] = "1"
 
@@ -19,11 +21,11 @@ TARGET_BIN_NAME= "hello-world-rs"
 # Specify the target architecture for cross-compilation
 TARGET_CC_ARCH += "${LDFLAGS}"
 # Set the Rust target triple for ARM which is different from Yocto
-RUST_TARGET_SYS= "armv7-unknown-linux-gnueabihf"
+RUST_TARGET_SYS=  "armv7-poky-linux-gnueabihf"
 
 do_install() {
     install -d ${D}${bindir}
-    install -m 0755 ${B}/${RUST_TARGET_SYS}/release/${TARGET_BIN_NAME} ${D}${bindir}/${TARGET_BIN_NAME}
+    install -m 0755 ${B}/target/${RUST_TARGET_SYS}/release/${TARGET_BIN_NAME} ${D}${bindir}/${TARGET_BIN_NAME}
 }
 
 FILES:${PN} = "${bindir}/${TARGET_BIN_NAME}"
