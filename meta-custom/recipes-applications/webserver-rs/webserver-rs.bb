@@ -16,19 +16,38 @@ do_fetch[network] = "1"
 do_compile[network] = "1"
 
 
+
 # Must match the name in Cargo.toml
 TARGET_BIN_NAME= "webserver-rs"
 # Specify the target architecture for cross-compilation
 TARGET_CC_ARCH += "${LDFLAGS}"
-# Set the Rust target triple for ARM which is different from Yocto
+
+
+# Automatically figured out
 # RUST_TARGET_SYS= "armv7-unknown-linux-gnueabihf"
-RUST_TARGET_SYS= "armv7-poky-linux-gnueabihf"
+# RUST_TARGET_SYS= "armv7-poky-linux-gnueabihf"
 
 CARGO_BUILD_FLAGS:remove = "--frozen"
 # Use cargo class variables to control behavior
 CARGO_DISABLE_BITBAKE_VENDORING = "1"
-# CARGO_BUILD_FLAGS = "--target ${RUST_TARGET_SYS} --release"
+# CARGO_BUILD_FLAGS = "--target ${RUST_TARGET_SYS} --release" ## automatically done
 
+
+python do_print_variables() {
+    bb.warn("=== Printing Variables Before Compile ===")
+
+    variables_to_print = [
+        'TARGET_CC_ARCH',
+        'RUST_TARGET_SYS',
+        'CARGO_BUILD_FLAGS'
+    ]
+
+    for var in variables_to_print:
+        value = d.getVar(var)
+        bb.warn(f"{var} = {value}")
+
+    bb.warn("\n=== End Variables ===")
+}
 
 HTML_DIR = "${S}/html"
 TARGET_HTML_DIR = "${localstatedir}/www/${BPN}/html"
@@ -45,3 +64,4 @@ do_install() {
 }
 
 FILES:${PN} += "${bindir}/${TARGET_BIN_NAME} ${TARGET_HTML_DIR}"
+addtask print_variables before do_compile

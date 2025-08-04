@@ -6,7 +6,7 @@ ASSIGNED_ADDRESS="192.168.100.10"
 
 
 sudo pkill dnsmasq
-sudo rm  /tmp/dnsmasq.log
+sudo rm -f /tmp/dnsmasq.log
 
 # Set static IP on laptop interface
 sudo ip addr replace 192.168.100.1/24 dev $INTERFACE
