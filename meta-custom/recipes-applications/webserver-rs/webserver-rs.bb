@@ -6,9 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 
 inherit cargo
-inherit rust
+# inherit rust is not needed
 
-SRC_URI = "git://github.com/quattervals/simple_srv_rs.git;branch=async_server;tag=v0.1.6;protocol=https"
+TAG = "0.1.6"
+SRC_URI = "git://github.com/quattervals/simple_srv_rs.git;branch=async_server;tag=v${TAG};protocol=https"
 
 S = "${WORKDIR}/git"
 
@@ -19,7 +20,7 @@ do_compile[network] = "1"
 
 # Must match the name in Cargo.toml
 TARGET_BIN_NAME= "webserver-rs"
-# Specify the target architecture for cross-compilation
+
 TARGET_CC_ARCH += "${LDFLAGS}"
 
 
@@ -39,7 +40,9 @@ python do_print_variables() {
     variables_to_print = [
         'TARGET_CC_ARCH',
         'RUST_TARGET_SYS',
-        'CARGO_BUILD_FLAGS'
+        'CARGO_BUILD_FLAGS',
+        'RUST_VERSION',
+        'CARGO_VERSION',
     ]
 
     for var in variables_to_print:
@@ -64,4 +67,5 @@ do_install() {
 }
 
 FILES:${PN} += "${bindir}/${TARGET_BIN_NAME} ${TARGET_HTML_DIR}"
-addtask print_variables before do_compile
+
+addtask print_variables before do_install
