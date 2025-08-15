@@ -38,3 +38,6 @@ IMAGE_INSTALL:append = " webserver-rs"
 IMAGE_INSTALL:append = " service-webserver-rs"
 IMAGE_INSTALL:append = " ssh-host-cert"
 
+IMAGE_INSTALL:append = " dt-overlay-test"
+
+IMAGE_INSTALL:append = " dtc"
