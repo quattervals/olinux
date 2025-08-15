@@ -7,32 +7,30 @@ inherit devicetree
 
 COMPATIBLE_MACHINE = "beaglebone"
 
-# Source files
-SRC_URI = "file://testoverlay.dts"
+# Source files - devicetree class expects .dtso extension
+SRC_URI = "file://testoverlay.dtso"
 
-# Install path
-S = "${WORKDIR}"
+# The devicetree class will handle compilation automatically
+# It compiles .dtso files to .dtbo files
 
-# Build the overlay
-do_compile() {
-    # Compile the device tree overlay
-    dtc -@ -I dts -O dtb -o ${B}/testoverlay.dtbo ${WORKDIR}/testoverlay.dts
-}
-
-do_install() {
+# Install to both /boot/overlays and deploy directory
+do_install:append() {
+    # Create overlays directory in rootfs
     install -d ${D}/boot/overlays
+    # Install the compiled overlay
     install -m 0644 ${B}/testoverlay.dtbo ${D}/boot/overlays/
 }
 
-# Deploy to appropriate location
-do_deploy() {
+# Deploy for boot partition integration
+do_deploy:append() {
+    # Create overlays directory in deploy
     install -d ${DEPLOYDIR}/overlays
+    # Deploy the compiled overlay
     install -m 0644 ${B}/testoverlay.dtbo ${DEPLOYDIR}/overlays/
 }
 
-addtask deploy before do_build after do_compile
+# Package the overlay files
+FILES:${PN} += "/boot/overlays/testoverlay.dtbo"
 
-FILES:${PN} = "/boot/overlays/testoverlay.dtbo"
-
-# Package the overlay
-PACKAGES = "${PN}"
+# Ensure this runs after kernel is built
+DEPENDS += "virtual/kernel"
