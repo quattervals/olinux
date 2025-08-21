@@ -38,7 +38,12 @@ IMAGE_INSTALL:append = " webserver-rs"
 IMAGE_INSTALL:append = " service-webserver-rs"
 IMAGE_INSTALL:append = " ssh-host-cert"
 
-IMAGE_INSTALL:append = " dt-overlay-test"
-IMAGE_INSTALL:append = " u-boot-env-beaglebone"
 
 IMAGE_INSTALL:append = " dtc"
+IMAGE_INSTALL:append = " dt-overlay-test"
+
+
+MACHINE_EXTRA_RDEPENDS += "u-boot-env-beaglebone"
+
+IMAGE_BOOT_FILES += "uEnv.txt"
+IMAGE_BOOT_FILES += "overlays/*.dtbo;overlays/"

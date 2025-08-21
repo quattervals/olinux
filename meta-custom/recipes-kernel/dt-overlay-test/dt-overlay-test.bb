@@ -14,23 +14,25 @@ SRC_URI = "file://testoverlay.dtso"
 # It compiles .dtso files to .dtbo files
 
 # Install to both /boot/overlays and deploy directory
-do_install:append() {
-    # Create overlays directory in rootfs
-    install -d ${D}/boot/overlays
-    # Install the compiled overlay
-    install -m 0644 ${B}/testoverlay.dtbo ${D}/boot/overlays/
-}
+# do_install:append() {
+#     # Create overlays directory in rootfs
+#     install -d ${D}/boot/overlays
+#     # Install the compiled overlay
+#     install -m 0644 ${B}/testoverlay.dtbo ${D}/boot/overlays/
+# }
 
 # Deploy for boot partition integration
 do_deploy:append() {
     # Create overlays directory in deploy
     install -d ${DEPLOYDIR}/overlays
     # Deploy the compiled overlay
-    install -m 0644 ${B}/testoverlay.dtbo ${DEPLOYDIR}/overlays/
+    install -m 0644 ${B}/*.dtbo ${DEPLOYDIR}/overlays/
+
 }
+addtask deploy before do_build after do_compile
 
 # Package the overlay files
-FILES:${PN} += "/boot/overlays/testoverlay.dtbo"
+# FILES:${PN} += "/boot/overlays/testoverlay.dtbo"
 
 # Ensure this runs after kernel is built
 DEPENDS += "virtual/kernel"
