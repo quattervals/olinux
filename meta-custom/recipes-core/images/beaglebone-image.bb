@@ -43,10 +43,8 @@ IMAGE_INSTALL:append = " dtc"
 IMAGE_INSTALL:append = " dt-overlay-test"
 
 
-MACHINE_EXTRA_RDEPENDS += "u-boot-env-beaglebone"
+# Use extlinux configuration instead of uEnv.txt for device tree overlay support
+MACHINE_EXTRA_RDEPENDS += "extlinux-beaglebone"
 
-IMAGE_BOOT_FILES += "uEnv.txt"
+IMAGE_BOOT_FILES += "extlinux/extlinux.conf;extlinux/"
 IMAGE_BOOT_FILES += "overlays/*.dtbo;overlays/"
-
-
-KERNEL_DEVICETREE += "overlays/testoverlay.dtbo"
