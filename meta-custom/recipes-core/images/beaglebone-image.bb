@@ -47,3 +47,6 @@ MACHINE_EXTRA_RDEPENDS += "u-boot-env-beaglebone"
 
 IMAGE_BOOT_FILES += "uEnv.txt"
 IMAGE_BOOT_FILES += "overlays/*.dtbo;overlays/"
+
+
+KERNEL_DEVICETREE += "overlays/testoverlay.dtbo"
