@@ -1,0 +1,7 @@
+/build/
+/meta-openembedded/
+/meta-arm/
+/meta-lts-mixins/
+/meta-ti/
+/poky/
+.git
