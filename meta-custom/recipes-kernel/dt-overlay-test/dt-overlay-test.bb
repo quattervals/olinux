@@ -5,13 +5,15 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 inherit devicetree
 
+# inherit uboot-extlinux-config
+
 COMPATIBLE_MACHINE = "beaglebone"
 
 # Source files - devicetree class expects .dtso extension
 SRC_URI = "file://testoverlay.dtso"
 
 # Add the -@ flag to Device Tree Compiler (DTC) flags
-DTC_FLAGS:append = "-@"
+DTC_FLAGS:append = " -@"
 
 # The devicetree class will handle compilation automatically
 # It compiles .dtso files to .dtbo files
@@ -40,5 +42,13 @@ FILES:${PN} += "/boot/overlays/testoverlay.dtbo"
 # Ensure this runs after kernel is built
 DEPENDS += "virtual/kernel"
 
+# UBOOT_EXTLINUX_CONFIG += "  fdtoverlays /overlays/testoverlay.dtbo"
+# UBOOT_EXTLINUX_FDTOVERLAYS = "/overlays/testoverlay.dtbo"
 
-DEPENDS += "u-boot-env-beaglebone"
+# Tell u-boot-extlinux-config to include the overlay in extlinux.conf
+# UBOOT_EXTLINUX_FDT_OVERLAY += "overlays/testoverlay.dtbo"
+
+# # Ensure the overlay is added to the boot image
+# IMAGE_BOOT_FILES += "overlays/testoverlay.dtbo"
+
+# DEPENDS += "u-boot-env-beaglebone"

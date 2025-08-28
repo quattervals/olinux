@@ -4,6 +4,7 @@ DESCRIPTION = "Minimal image for BeagleBone Black with systemd-networkd"
 LICENSE = "MIT"
 
 inherit core-image
+inherit uboot-extlinux-config
 
 IMAGE_INSTALL:append = " kernel-modules"
 IMAGE_INSTALL:remove = " sysvinit"
