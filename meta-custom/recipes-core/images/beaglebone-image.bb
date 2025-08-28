@@ -4,7 +4,7 @@ DESCRIPTION = "Minimal image for BeagleBone Black with systemd-networkd"
 LICENSE = "MIT"
 
 inherit core-image
-inherit uboot-extlinux-config
+inherit uboot-extlinux-config-custom
 
 IMAGE_INSTALL:append = " kernel-modules"
 IMAGE_INSTALL:remove = " sysvinit"
@@ -42,10 +42,3 @@ IMAGE_INSTALL:append = " ssh-host-cert"
 
 IMAGE_INSTALL:append = " dtc"
 IMAGE_INSTALL:append = " dt-overlay-test"
-
-
-# Use extlinux configuration instead of uEnv.txt for device tree overlay support
-MACHINE_EXTRA_RDEPENDS += "extlinux-beaglebone"
-
-IMAGE_BOOT_FILES += "extlinux/extlinux.conf;extlinux/"
-IMAGE_BOOT_FILES += "overlays/*.dtbo;overlays/"

@@ -1,6 +1,0 @@
-uname_r=6.6.58-yocto-standard
-enable_uboot_overlays=1
-uboot_overlay_addr0=overlays/testoverlay.dtbo
-cmdline=coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet
-dto_cmd=load mmc 0:1 ${fdtoverlay_addr_r} overlays/testoverlay.dtbo; fdt resize 0x10000; fdt apply ${fdtoverlay_addr_r};
-bootcmd=run findfdt; run init_console; run finduuid; run distro_bootcmd; run dto_cmd;
