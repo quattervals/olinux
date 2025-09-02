@@ -4,16 +4,19 @@ DESCRIPTION = "Minimal image for BeagleBone Black with systemd-networkd"
 LICENSE = "MIT"
 
 inherit core-image
-inherit uboot-extlinux-config-custom
+# inherit uboot-extlinux-config-custom
 
 IMAGE_INSTALL:append = " kernel-modules"
 IMAGE_INSTALL:remove = " sysvinit"
 
 # Enable systemd networking components
 PACKAGECONFIG:append:pn-systemd = " networkd resolved"
+IMAGE_INSTALL:append = " systemd-compat-units"
 
 # Remove conflicting network management
 BAD_RECOMMENDATIONS += "busybox-syslog"
+
+
 
 # Add our custom configurations
 IMAGE_INSTALL:append = " \
@@ -42,3 +45,4 @@ IMAGE_INSTALL:append = " ssh-host-cert"
 
 IMAGE_INSTALL:append = " dtc"
 IMAGE_INSTALL:append = " dt-overlay-test"
+IMAGE_INSTALL:append = " extlinux-conf"
