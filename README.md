@@ -1,5 +1,7 @@
 # Educational BeagleBone Black Linux
 
+*"Educational": Do not use this directly in production*
+
 Decent platform to do all sorts of things wanted from embedded linux
 
 ## Setup
